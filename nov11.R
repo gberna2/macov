@@ -28,3 +28,14 @@ ggplot(hos, aes(Date))+
     xlab(label = "Date")+
     ylab(element_blank())+
     labs(title = "hospitalizations and ICU")
+
+
+# intubations
+intub<- hospitalizations%>%
+    filter(as.Date(Date)>"2020-06-01")
+
+attach(intub)
+
+ggplot(intub, aes(Date, `Confirmed intubated`))+
+    geom_line(color="red")+
+    theme_classic()
